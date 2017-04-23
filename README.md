@@ -1,6 +1,6 @@
 # APM-Routed
 
-Deborak Kurata's Angular Routing APM-Start example used in her Pluralsight course converted to use Angular-CLI 1.0.0 and Angular 4.0.3
+Deborak Kurata's Angular Routing APM-Final example used in her Pluralsight course converted to use Angular-CLI 1.0.0 and Angular 4.0.3
 
 ## References
 
