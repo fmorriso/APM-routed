@@ -1,6 +1,14 @@
 # APM-Routed
 
-Deborak Kurata's Angular Routing APM-Final example used in her Pluralsight course converted to use Angular-CLI 1.0.0 and Angular 4.0.3
+Deborah Kurata's Angular Routing APM-Final example used in her Pluralsight course converted to use Angular-CLI 1.0.0 and Angular 4.0.3.
+
+I thought I knew a lot about Angular-CLI already, but learned quite a lot more by taking John Papa's Angular-CLI course on Pluralsight.
+
+I also made a few other tweaks to the code, such as splitting off CSS into thier own component-specific .css files.
+
+I also changed `package.json` to `ng build` and `ng serve` using my preferred parameters.
+
+I regularly use npm-check-updates in the form of `ncu -a` to keep packages.json up-to-date.
 
 ## References
 
@@ -8,7 +16,7 @@ Deborak Kurata's Angular Routing APM-Final example used in her Pluralsight cours
 
 [Deborak Kurata's Angular Routing Problem Solver](http://blogs.msmvps.com/deborahk/angular-routing-problem-solver/)
 
-[Deborah Kurata's original APM-Start](https://github.com/DeborahK/Angular-Routing)
+[Deborah Kurata's original APM-Start and APM-Final](https://github.com/DeborahK/Angular-Routing)
 
 ## Other tools used
 
@@ -41,7 +49,7 @@ And yes, I will be the first to agree that putting `--prod` on `ng build` seems 
 You will be amazed how many errors that `ng build --prod` uncovers that `ng build` remains blissfully unware of.
  
 In fact, I routinely replace the default generated `scripts` in package.json with these:
-```angular2html
+```json
     "build": "ng build --verbose --progress --vendor-chunk --extract-css",
     "build-prod": "ng build --verbose --progress --vendor-chunk --extract-css --prod",
     "start": "ng serve --open --verbose --vendor-chunk --extract-css",

@@ -24,10 +24,10 @@ export class LoginComponent {
             this.password = loginForm.form.value.password;
             this.authService.login(this.userName, this.password);
 
-            // Navigate to the Product List page after log in.
+            // Navigate to the Product List page after successful log in.
             this.router.navigate(['/products']);
         } else {
             this.errorMessage = 'Please enter a user name and password.';
-        };
+        }
     }
 }
