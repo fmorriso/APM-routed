@@ -7,21 +7,21 @@
                     <a [routerLink]="['/welcome']">Home</a>
                 </li>
                 <li>
-                    <a>Product List</a>
+                    <a [routerLink]="['/products']">Product List</a>
                 </li>
                 <li>
-                    <a>Add Product</a>
+                    <a>Add a Product</a>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li *ngIf="isLoggedIn()">
-                    <a>Welcome {{ currentUser.userName }}</a>
+                    <a>Welcome {{ getCurrentUserName() }}</a>
                 </li>
                 <li>
                     <a>Show Messages</a>
                 </li>
                 <li *ngIf="!isLoggedIn()">
-                    <a>Log In</a>
+                    <a [routerLink]="['/login']">Log In</a>
                 </li>
                 <li *ngIf="isLoggedIn()">
                     <a (click)="logOut()">Log Out</a>
