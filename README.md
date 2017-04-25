@@ -26,13 +26,13 @@ I regularly use npm-check-updates in the form of `ncu -a` to keep package.json u
 * [TypeScript 2.2.2](https://www.npmjs.com/package/typescript)
 
 ## zone.js cautionary tale
-As of April 24, 2017, zone.js 0.8.8 and Angular 4.0.3 __do not play nice togeher__, so you need to keep zone.js at 0.8.7 or earlier.
+As of April 24, 2017, zone.js 0.8.8 and Angular 4.0.3 __do not play nice togeher__, so you need to upgrade zone.js to 0.8.9 as shown below:
 
-If you upgraded to zone.js 0.8.8 and want to avoid errors appearing in your browser's Developer Tools console window, downgrade to zone.js 0.8.7 or earlier by performing the following:
 ```angular2html
 cd yourProjectDirectory
-npm install -S zone.js@0.8.7
+npm install -S zone.js@0.8.9
 ```
+
 
 ## ng build cautionary tale
 
