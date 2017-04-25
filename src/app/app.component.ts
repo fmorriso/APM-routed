@@ -17,7 +17,8 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.currentUser = this.authService.currentUser
+
+    //this.currentUser = this.authService.currentUser
   }
 
   logOut(): void {
@@ -27,6 +28,13 @@ export class AppComponent implements OnInit {
 
   isLoggedIn(): boolean {
     return this.authService.isLoggedIn();
+  }
+
+  getCurrentUserName() : string {
+    if(this.isLoggedIn()) {
+      return this.authService.getCurrentUserName();
+    }
+    return '';
   }
 
 }
