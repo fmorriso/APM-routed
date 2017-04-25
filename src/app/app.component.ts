@@ -34,7 +34,7 @@ export class AppComponent implements OnInit {
     if(this.isLoggedIn()) {
       return this.authService.getCurrentUserName();
     }
-    return 'x';
+    return '';
   }
 
 }

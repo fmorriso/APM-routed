@@ -5,7 +5,7 @@ export class MessageService {
   private messages: string[] = [];
 
   addMessage(message: string): void {
-    console.log('addMessage - message=' + message);
+    //console.log('addMessage - message=' + message);
     const currentDate = new Date();
     this.messages.unshift(message + ' at ' + currentDate.toLocaleString());
   }
