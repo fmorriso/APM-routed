@@ -1,7 +1,10 @@
 import {Component, OnInit} from '@angular/core';
+import {Router}            from '@angular/router';
 
-import {AuthService} from './user/auth.service';
-import {IUser} from './user/user';
+
+import {AuthService}       from './user/auth.service';
+import {IUser}             from './user/user';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -13,17 +16,15 @@ export class AppComponent implements OnInit {
   userName: string;//
   currentUser: IUser;
 
-  constructor(private authService: AuthService) {
-  }
+  constructor(private authService: AuthService,
+              private router: Router) {}
 
   ngOnInit() {
-
-    //this.currentUser = this.authService.currentUser
   }
 
   logOut(): void {
     this.authService.logout();
-    console.log('Log out');
+    this.router.navigateByUrl('/welcome');
   }
 
   isLoggedIn(): boolean {
