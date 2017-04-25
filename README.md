@@ -14,7 +14,7 @@ I regularly use npm-check-updates in the form of `ncu -a` to keep packages.json 
 
 [Angular-CLI WiKi](https://github.com/angular/angular-cli/wiki)
 
-[Deborak Kurata's Angular Routing Problem Solver](http://blogs.msmvps.com/deborahk/angular-routing-problem-solver/)
+[Deborah Kurata's Angular Routing Problem Solver](http://blogs.msmvps.com/deborahk/angular-routing-problem-solver/)
 
 [Deborah Kurata's original APM-Start and APM-Final](https://github.com/DeborahK/Angular-Routing)
 
@@ -36,7 +36,7 @@ npm install -S zone.js@0.8.7
 
 ## ng build cautionary tale
 
-I have learned the hard way to use the following for building the project:
+I have learned the hard way to use the following for building the project _before_ `ng serve`ing it:
 
 ```
 ng build --verbose --progress --vendor-chunk --extract-css --prod
@@ -44,11 +44,11 @@ ng build --verbose --progress --vendor-chunk --extract-css --prod
 
 If you leave off `--prod`, your build may not spot all of the errors in your project.  
 
-And yes, I will be the first to agree that putting `--prod` on `ng build` seems like overkill, but trust me, you want to find out from `ng build --prod` what is wrong with your project, not from `ng serve --prod`.
+And yes, I will be the first to agree that putting `--prod` on `ng build` during development seems like overkill, but trust me, you want to find out from `ng build --prod` what is wrong with your project, not from `ng serve --prod`.
 
 You will be amazed how many errors that `ng build --prod` uncovers that `ng build` remains blissfully unware of.
  
-In fact, I routinely replace the default generated `scripts` in package.json with these:
+In fact, I routinely replace the default Angular-CLI generated `scripts` in package.json with these:
 ```json
     "build": "ng build --verbose --progress --vendor-chunk --extract-css",
     "build-prod": "ng build --verbose --progress --vendor-chunk --extract-css --prod",
