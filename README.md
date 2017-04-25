@@ -46,7 +46,7 @@ If you leave off `--prod`, your build may not spot all of the errors in your pro
 
 And yes, I will be the first to agree that putting `--prod` on `ng build` during development seems like overkill, but trust me, you want to find out from `ng build --prod` what is wrong with your project, not from `ng serve --prod`.
 
-You will be amazed how many errors that `ng build --prod` uncovers that `ng build` remains blissfully unware of.
+You will be amazed how many errors that `ng build --prod` uncovers that `ng build` remains blissfully unaware of.
  
 In fact, I routinely replace the default Angular-CLI generated `scripts` in package.json with these:
 ```json
