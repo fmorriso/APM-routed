@@ -28,7 +28,7 @@ I regularly use npm-check-updates in the form of `ncu -a` to keep package.json u
 ## zone.js cautionary tale
 As of April 24, 2017, zone.js 0.8.8 and Angular 4.x __do not play nice togeher__, so you need to upgrade zone.js to 0.8.9 as shown below:
 
-```angular2html
+```
 cd yourProjectDirectory
 npm install -S zone.js@0.8.9
 ```
