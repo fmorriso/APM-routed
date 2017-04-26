@@ -1,6 +1,6 @@
 # APM-Routed
 
-Deborah Kurata's Angular Routing APM-Final example used in her Pluralsight course converted to use Angular-CLI 1.0.1 and Angular 4.0.3.
+Deborah Kurata's Angular Routing APM-Final example used in her Pluralsight course converted to use Angular-CLI 1.0.1 and Angular 4.1.0.
 
 I thought I knew a lot about Angular-CLI already, but learned quite a lot more by taking John Papa's Angular-CLI course on Pluralsight.
 
@@ -26,13 +26,12 @@ I regularly use npm-check-updates in the form of `ncu -a` to keep package.json u
 * [TypeScript 2.2.2](https://www.npmjs.com/package/typescript)
 
 ## zone.js cautionary tale
-As of April 24, 2017, zone.js 0.8.8 and Angular 4.0.3 __do not play nice togeher__, so you need to upgrade zone.js to 0.8.9 as shown below:
+As of April 24, 2017, zone.js 0.8.8 and Angular 4.x __do not play nice togeher__, so you need to upgrade zone.js to 0.8.9 as shown below:
 
 ```angular2html
 cd yourProjectDirectory
 npm install -S zone.js@0.8.9
 ```
-
 
 ## ng build cautionary tale
 
