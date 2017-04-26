@@ -26,7 +26,7 @@ export class ProductEditComponent implements OnInit {
       // subscribe to the observable of changes in route parameters
       this.route.params.subscribe(
         params => {
-          const id: number= +this.route.snapshot.params['id'];
+          const id: number= Number(this.route.snapshot.params['id']);
           this.getProduct(id);
         }
       );
