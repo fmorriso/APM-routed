@@ -12,9 +12,9 @@ import { ProductService }         from './product.service';
     styleUrls: ['./product-edit.component.css']
 })
 export class ProductEditComponent implements OnInit {
+
     pageTitle: string = 'Product Edit';
     errorMessage: string;
-
     product: IProduct;
 
     constructor(private productService: ProductService,
@@ -23,11 +23,17 @@ export class ProductEditComponent implements OnInit {
                 private router: Router) { }
 
     ngOnInit(): void {
-      const id: number = <number>this.route.snapshot.params['id'];
-      this.getProduct(id);
+      // subscribe to the observable of changes in route parameters
+      this.route.params.subscribe(
+        params => {
+          const id: number= +this.route.snapshot.params['id'];
+          this.getProduct(id);
+        }
+      );
     }
 
     getProduct(id: number): void {
+        console.log('product-edit - getProduct - id:' + id);
         this.productService.getProduct(id)
             .subscribe(
                 (product: IProduct) => this.onProductRetrieved(product),
@@ -37,7 +43,7 @@ export class ProductEditComponent implements OnInit {
 
     onProductRetrieved(product: IProduct): void {
         this.product = product;
-
+        //console.log('product-edit - onProductRetrieved - product:' + JSON.stringify(product));
         if (this.product.id === 0) {
             this.pageTitle = 'Add Product';
         } else {

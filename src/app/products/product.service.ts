@@ -14,7 +14,8 @@ import {IProduct} from './product';
 export class ProductService {
   private baseUrl = 'api/products';
 
-    constructor(private http: Http) { }
+  constructor(private http: Http) {
+  }
 
   getProducts(): Observable<IProduct[]> {
     return this.http.get(this.baseUrl)
@@ -24,9 +25,12 @@ export class ProductService {
   }
 
   getProduct(id: number): Observable<IProduct> {
+    console.log('product.service - getProduct - id === 0:' + (id === 0));
     if (id === 0) {
-      return Observable.of(this.initializeProduct());
-    };
+      const product = ProductService.initializeProduct();
+      console.log('product.service - after initializeProduct - product:' + JSON.stringify(product));
+      return Observable.of(product);
+    }
     const url = `${this.baseUrl}/${id}`;
     return this.http.get(url)
       .map(this.extractData)
@@ -82,9 +86,9 @@ export class ProductService {
     return Observable.throw(error.json().error || 'Server error');
   }
 
-  initializeProduct(): IProduct {
-    // Return an initialized object
-    return {
+  static initializeProduct(): IProduct {
+    //console.log('made it to top initializeProduct');
+    const product: IProduct = {
       id: 0,
       productName: null,
       productCode: null,
@@ -96,5 +100,7 @@ export class ProductService {
       starRating: null,
       imageUrl: null
     };
+    //console.log('product.service - bottom of initializeProduct - product:' + JSON.stringify(product));
+    return product;
   }
 }
