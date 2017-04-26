@@ -25,10 +25,10 @@ export class ProductService {
   }
 
   getProduct(id: number): Observable<IProduct> {
-    console.log('product.service - getProduct - id === 0:' + (id === 0));
+    //console.log('product.service - getProduct - id === 0:' + (id === 0));
     if (id === 0) {
       const product = ProductService.initializeProduct();
-      console.log('product.service - after initializeProduct - product:' + JSON.stringify(product));
+      //console.log('product.service - after initializeProduct - product:' + JSON.stringify(product));
       return Observable.of(product);
     }
     const url = `${this.baseUrl}/${id}`;
