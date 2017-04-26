@@ -14,8 +14,7 @@ import {IProduct} from './product';
 export class ProductService {
   private baseUrl = 'api/products';
 
-  constructor(private http: Http) {
-  }
+    constructor(private http: Http) { }
 
   getProducts(): Observable<IProduct[]> {
     return this.http.get(this.baseUrl)
@@ -27,8 +26,7 @@ export class ProductService {
   getProduct(id: number): Observable<IProduct> {
     if (id === 0) {
       return Observable.of(this.initializeProduct());
-    }
-    ;
+    };
     const url = `${this.baseUrl}/${id}`;
     return this.http.get(url)
       .map(this.extractData)
