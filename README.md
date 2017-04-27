@@ -57,12 +57,19 @@ In fact, I routinely replace the default Angular-CLI generated `scripts` in pack
 
 ## Recent changes
 
-HTML anchor tags: `[preserveQueryParams]="true"` has been deprecated in Angular 4.x.  It has been replaced by `[queryParamsHandling]="preserve"`
+HTML anchor tags that need to specify that query parameters should be preserved used this syntax: 
+
+`[preserveQueryParams]="true"` 
+
+which has been deprecated in Angular 4.x.  It has been replaced by
+ 
+ `queryParamsHandling="preserve"`
+ 
+ __Please note how the replacement does not use []__
 
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
-```javascript
-console.log(`example of backticks {x}`)
+
 ```
