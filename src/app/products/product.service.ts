@@ -27,7 +27,7 @@ export class ProductService {
   getProduct(id: number): Observable<IProduct> {
     //console.log('product.service - getProduct - id === 0:' + (id === 0));
     if (id === 0) {
-      const product = ProductService.initializeProduct();
+      const product = this.initializeProduct();
       //console.log('product.service - after initializeProduct - product:' + JSON.stringify(product));
       return Observable.of(product);
     }
@@ -86,7 +86,7 @@ export class ProductService {
     return Observable.throw(error.json().error || 'Server error');
   }
 
-  static initializeProduct(): IProduct {
+  private initializeProduct(): IProduct {
     //console.log('made it to top initializeProduct');
     const product: IProduct = {
       id: 0,

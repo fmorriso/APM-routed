@@ -24,16 +24,18 @@ export class ProductEditComponent implements OnInit {
 
     ngOnInit(): void {
       // subscribe to the observable of changes in route parameters
-      this.route.params.subscribe(
+      this.route.paramMap.subscribe(
         params => {
-          const id: number= Number(this.route.snapshot.params['id']);
+          console.log(`product-edit - ngOnInit - paramMap - params=${JSON.stringify(params)}`);
+          //const id: number= Number(params['id']);
+          const id: number = Number(params.get('id'));
           this.getProduct(id);
         }
       );
     }
 
     getProduct(id: number): void {
-        console.log('product-edit - getProduct - id:' + id);
+        // console.log('product-edit - getProduct - id:' + id);
         this.productService.getProduct(id)
             .subscribe(
                 (product: IProduct) => this.onProductRetrieved(product),

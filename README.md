@@ -23,7 +23,7 @@ I regularly use npm-check-updates in the form of `ncu -a` to keep package.json u
 * [Angular-CLI 1.0.1](https://github.com/angular/angular-cli/wiki)
 * [JetBrains WebStorm 2017.1.2](https://www.jetbrains.com/webstorm/) - has lots of built-in, out-of-box support for both Angular 4 and Angular-CLI that have to be added on to other IDE's such as Visual Studio Code.  WebStorm has a nice, built-in npm runner window and good GitHub.com source code control interaction.  If WebStorm has any short-comings, it's the lack of --dry-run support when using it's File / New / Angular-CLI capability, but that can be overcome using the built-in Terminal window.
 * [npm-check-updates 2.11.0](https://www.npmjs.com/package/npm-check-updates) - no more manually updating package.json when something changes in one of the dependencies.  Saves a lot of time by just running `ncu -a` followed by `npm install`.
-* [TypeScript 2.2.2](https://www.npmjs.com/package/typescript)
+* [TypeScript 2.3.1](https://www.npmjs.com/package/typescript)
 
 ## zone.js cautionary tale
 As of April 24, 2017, zone.js 0.8.8 and Angular 4.x __do not play nice togeher__, so you need to upgrade zone.js to 0.8.9 as shown below:
@@ -55,6 +55,14 @@ In fact, I routinely replace the default Angular-CLI generated `scripts` in pack
     "start-prod": "ng serve --open --verbose --vendor-chunk --extract-css --prod",
 ```
 
+## Recent changes
+
+HTML anchor tags: `[preserveQueryParams]="true"` has been deprecated in Angular 4.x.  It has been replaced by `[queryParamsHandling]="preserve"`
+
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+```javascript
+console.log(`example of backticks {x}`)
+```

@@ -2,7 +2,7 @@ import { InMemoryDbService, InMemoryBackendConfig } from 'angular-in-memory-web-
 
 import { IProduct } from './product';
 
-export class ProductData implements InMemoryDbService, InMemoryBackendConfig {
+export class ProductData implements InMemoryDbService {
     createDb() {
         const products: IProduct[] = [
             {
