@@ -20,6 +20,7 @@ export class AppComponent implements OnInit {
               private router: Router) {}
 
   ngOnInit() {
+
   }
 
   logOut(): void {

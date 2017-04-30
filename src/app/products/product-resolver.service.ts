@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {
   Resolve, ActivatedRouteSnapshot,
   RouterStateSnapshot, Router
@@ -17,6 +17,7 @@ export class ProductResolver implements Resolve<IProduct> {
   }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<IProduct> {
+
     const id: number = Number(route.paramMap.get('id')); // old: +route.params['id']
     //const possibleId: string = route.paramMap.get('id');
     if (isNaN(id)) {
@@ -24,6 +25,20 @@ export class ProductResolver implements Resolve<IProduct> {
       this.router.navigate(['/products']);
       return Observable.of(null);
     }
-    return null;
+
+    return this.productService.getProduct(+id)
+      .map(product => {
+        if (product) {
+          return product;
+        }
+        console.log(`Product was not found: ${id}`);
+        this.router.navigate(['/products']);
+        return null;
+      })
+      .catch(error => {
+        console.log(`Retrieval error: ${error}`);
+        this.router.navigate(['/products']);
+        return Observable.of(null);
+      });
   }
 }
