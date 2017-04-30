@@ -1,8 +1,8 @@
-import {Component, OnInit}  from '@angular/core';
-import {ActivatedRoute}     from '@angular/router'
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute }    from '@angular/router'
 
-import {IProduct}           from './product';
-import {ProductService}     from './product.service';
+import { IProduct }          from './product';
+import { ProductService }    from './product.service';
 
 
 @Component({
@@ -20,8 +20,7 @@ export class ProductListComponent implements OnInit {
   products: IProduct[];
 
   constructor(private productService: ProductService,
-              private route: ActivatedRoute) {
-  }
+              private route: ActivatedRoute) { }
 
   toggleImage(): void {
     this.showImage = !this.showImage;
@@ -30,6 +29,7 @@ export class ProductListComponent implements OnInit {
   ngOnInit(): void {
     // read any optional query parameters
     this.listFilter = this.route.snapshot.queryParamMap.get('filterBy') || '';
+    // Warning:  Boolean( this.route.snapshot.queryParamMap.get('showImage') ) is always true, even when it contains the string 'false' !
     this.showImage =  this.route.snapshot.queryParamMap.get('showImage') === 'true';
 
     this.productService.getProducts()
