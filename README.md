@@ -57,7 +57,7 @@ In fact, I routinely replace the default Angular-CLI generated `scripts` in pack
 ## Example of using Angular-CLI
 
 In module 6 of her Pluralsight course, Deborah patiently (one of the reasons I love her courses) explains how to create the _ProductResolver_ service.
-The Angular-CLI way to scaffold tha service is shown below in two steps.  
+The Angular-CLI way to scaffold tha service is shown below in multiple steps.  
 
 The first one uses Angular-CLI's _dry run_ feature, something I learned from John Papa's excellent Pluralsight course on Angular-CLI, which I took just before taking Deborah's course.
 
@@ -78,36 +78,46 @@ You specified the dry-run flag, so no changes will be written.
 ```
 
 Notice the _WARNING_ about not updating any module(s) to make them aware of the proposed new service.
+Also notice that the proposed new service will not be created in the correct directory.
 Since Deborah's course narrative informs us that the proposed new ProductResolver service eventually needs to be imported into the Product module,
 we add that to our dry run as shown below:
 
-`ng g s ProductResolver -m products/product.module -d`
+`ng g s products/ProductResolver -m products/product.module -d`
 
 
-Notice how it tells us that will automatically update the module that Deborah wants updated:
+Notice how it tells us that as part of generating the ProductResolver service, it will automatically update the module that Deborah wants updated:
 ```
 installing service
 You specified the dry-run flag, so no changes will be written.
-  create src\app\product-resolver.service.spec.ts
-  create src\app\product-resolver.service.ts
+  create src\app\products\product-resolver.service.spec.ts
+  create src\app\products\product-resolver.service.ts
   update src\app\products\product.module.ts
 ```
 
 
 Finally, we run the command for real by removing the dry run option:
 
-`ng g s ProductResolver -m products/product.module`
+`ng g s products/ProductResolver -m products/product.module`
 
 The results are shown below:
 
 ```
 installing service
-  create src\app\product-resolver.service.spec.ts
-  create src\app\product-resolver.service.ts
+  create src\app\products\product-resolver.service.spec.ts
+  create src\app\products\product-resolver.service.ts
   update src\app\products\product.module.ts
 ```
 
 Now we can just change product-resolver.service.ts as instructed in Deborah's course video.
+
+I try as much as possible to scaffold the code for what I refer to as "APM-Routed" the "Angular-CLI way" as much as possible.
+I'm not saying you should avoid "hand wiring" things the way Deborah demonstrates in her course video.
+What I am saying is that once you understand the "manual way", you can begin to appreciate the time-saving plus consistency that using `ng generate` provides.
+
+I strongly encourage you to take John Papa's Pluralsight course about Angular-CLI. 
+I thought I understood how to use Angular-CLI very well.
+Boy, was I wrong.
+John showed me things that saved me a lot of pain, especially `--dryRun`, which is the best take-away I received as a result of taking his course.
 
 
 ## Recent changes
