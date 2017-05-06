@@ -13,6 +13,7 @@ import { SharedModule }             from '../shared/shared.module';
 import { ProductEditInfoComponent } from './product-edit-info.component';
 import { ProductEditTagsComponent } from './product-edit-tags.component';
 import { ProductResolver }          from './product-resolver.service';
+import { ProductResolverService } from './../product-resolver.service';
 
 @NgModule({
   imports: [
@@ -33,7 +34,8 @@ import { ProductResolver }          from './product-resolver.service';
   ],
   providers: [
     ProductService,
-    ProductResolver
+    ProductResolver,
+    ProductResolverService
   ]
 })
 export class ProductModule {}

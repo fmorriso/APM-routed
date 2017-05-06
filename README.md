@@ -1,6 +1,6 @@
 # APM-Routed
 
-Deborah Kurata's Angular Routing APM-Final example used in her Pluralsight course converted to use Angular-CLI 1.0.1 and Angular 4.1.0.
+Deborah Kurata's Angular Routing APM-Final example used in her Pluralsight course converted to use Angular-CLI 1.0.2 and Angular 4.1.1.
 
 I thought I knew a lot about Angular-CLI already, but learned quite a lot more by taking John Papa's Angular-CLI course on Pluralsight.
 
@@ -20,7 +20,7 @@ I regularly use npm-check-updates in the form of `ncu -a` to keep package.json u
 
 ## Other tools used
 
-* [Angular-CLI 1.0.1](https://github.com/angular/angular-cli/wiki)
+* [Angular-CLI 1.0.2](https://github.com/angular/angular-cli/wiki)
 * [JetBrains WebStorm 2017.1.2](https://www.jetbrains.com/webstorm/) - has lots of built-in, out-of-box support for both Angular 4 and Angular-CLI that have to be added on to other IDE's such as Visual Studio Code.  WebStorm has a nice, built-in npm runner window and good GitHub.com source code control interaction.  If WebStorm has any short-comings, it's the lack of --dry-run support when using it's File / New / Angular-CLI capability, but that can be overcome using the built-in Terminal window.
 * [npm-check-updates 2.11.0](https://www.npmjs.com/package/npm-check-updates) - no more manually updating package.json when something changes in one of the dependencies.  Saves a lot of time by just running `ncu -a` followed by `npm install`.
 * [TypeScript 2.3.2](https://www.npmjs.com/package/typescript)
@@ -53,6 +53,62 @@ In fact, I routinely replace the default Angular-CLI generated `scripts` in pack
     "start": "ng serve --open --verbose --vendor-chunk --extract-css",
     "start-prod": "ng serve --open --verbose --vendor-chunk --extract-css --prod",
 ```
+
+## Example of using Angular-CLI
+
+In module 6 of her Pluralsight course, Deborah patiently (one of the reasons I love her courses) explains how to create the _ProductResolver_ service.
+The Angular-CLI way to scaffold tha service is shown below in two steps.  
+
+The first one uses Angular-CLI's _dry run_ feature, something I learned from John Papa's excellent Pluralsight course on Angular-CLI, which I took just before taking Deborah's course.
+
+`ng g s ProductResolver -d`
+
+or, if you want the long version of the above:
+
+`ng generate service ProductResolver --dryRun`
+
+The result of the above is the following output:
+
+```
+installing service
+You specified the dry-run flag, so no changes will be written.
+  create src\app\product-resolver.service.spec.ts
+  create src\app\product-resolver.service.ts
+  WARNING Service is generated but not provided, it must be provided to be used
+```
+
+Notice the _WARNING_ about not updating any module(s) to make them aware of the proposed new service.
+Since Deborah's course narrative informs us that the proposed new ProductResolver service eventually needs to be imported into the Product module,
+we add that to our dry run as shown below:
+
+`ng g s ProductResolver -m products/product.module -d`
+
+
+Notice how it tells us that will automatically update the module that Deborah wants updated:
+```
+installing service
+You specified the dry-run flag, so no changes will be written.
+  create src\app\product-resolver.service.spec.ts
+  create src\app\product-resolver.service.ts
+  update src\app\products\product.module.ts
+```
+
+
+Finally, we run the command for real by removing the dry run option:
+
+`ng g s ProductResolver -m products/product.module`
+
+The results are shown below:
+
+```
+installing service
+  create src\app\product-resolver.service.spec.ts
+  create src\app\product-resolver.service.ts
+  update src\app\products\product.module.ts
+```
+
+Now we can just change product-resolver.service.ts as instructed in Deborah's course video.
+
 
 ## Recent changes
 
