@@ -18,8 +18,7 @@ export class ProductResolver implements Resolve<IProduct> {
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<IProduct> {
 
-    const id: number = Number(route.paramMap.get('id')); // old: +route.params['id']
-    //const possibleId: string = route.paramMap.get('id');
+    const id: number = Number(route.paramMap.get('id'));
     if (isNaN(id)) {
       console.log(`Product id was not a number: ${id}`);
       this.router.navigate(['/products']);
@@ -33,6 +32,7 @@ export class ProductResolver implements Resolve<IProduct> {
         }
         console.log(`Product was not found: ${id}`);
         this.router.navigate(['/products']);
+        // NOTE: no need to use Observable.of(null) on next line because .map() does that automatically for us.
         return null;
       })
       .catch(error => {

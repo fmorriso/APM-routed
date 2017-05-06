@@ -120,7 +120,9 @@ Boy, was I wrong.
 John showed me things that saved me a lot of pain, especially `--dryRun`, which is the best take-away I received as a result of taking his course.
 
 
-## Recent changes
+## Changes
+
+### preserveQueryParams deprecated in favor of queryParamsHandling
 
 HTML anchor tags that need to specify that query parameters should be preserved used this syntax: 
 
@@ -131,6 +133,22 @@ which has been deprecated in Angular 4.x.  It has been replaced by
  `queryParamsHandling="preserve"`
  
  __Please note how the replacement does not use []__
+
+## Testing for numeric product id
+
+Here's how I check the incoming id in the Route Resolver resolve method:
+
+
+ ```
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<IProduct> {
+
+    const id: number = Number(route.paramMap.get('id')); 
+    if (isNaN(id)) {
+      console.log(`Product id was not a number: ${id}`);
+      this.router.navigate(['/products']);
+      return Observable.of(null);
+    }
+```
 
 ## Further help
 
