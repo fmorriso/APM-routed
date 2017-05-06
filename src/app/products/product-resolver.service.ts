@@ -25,7 +25,7 @@ export class ProductResolver implements Resolve<IProduct> {
       return Observable.of(null);
     }
 
-    return this.productService.getProduct(+id)
+    return this.productService.getProduct(id)
       .map(product => {
         if (product) {
           return product;
