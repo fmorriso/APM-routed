@@ -7,20 +7,29 @@ import { ProductEditComponent }     from './product-edit.component';
 
 import { ProductFilterPipe }        from './product-filter.pipe';
 import { ProductService }           from './product.service';
+import { ProductResolver }          from './product-resolver.service';
 
 import { SharedModule }             from '../shared/shared.module';
 
 import { ProductEditInfoComponent } from './product-edit-info.component';
 import { ProductEditTagsComponent } from './product-edit-tags.component';
-import { ProductResolver }          from './product-resolver.service';
 
+// NOTE: the resolve: pre-fetches the data (a product in this example) before the screen displays
 @NgModule({
   imports: [
     SharedModule,
     RouterModule.forChild([
       { path: 'products', component: ProductListComponent },
-      { path: 'products/:id', component: ProductDetailComponent },
-      { path: 'products/:id/edit', component: ProductEditComponent }
+      {
+        path: 'products/:id',
+        component: ProductDetailComponent,
+        resolve: { product: ProductResolver }
+      },
+      {
+        path: 'products/:id/edit',
+        component: ProductEditComponent,
+        resolve: { product: ProductResolver }
+      }
     ])
   ],
   declarations: [

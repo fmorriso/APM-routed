@@ -4,9 +4,12 @@ import {
   RouterStateSnapshot, Router
 } from '@angular/router';
 
+import {Observable}     from 'rxjs/Observable';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/of';
+import 'rxjs/add/operator/map';
 
 import {ProductService} from './product.service';
-import {Observable}     from 'rxjs/Observable';
 import {IProduct}       from './product';
 
 @Injectable()
