@@ -29,7 +29,7 @@ export class ProductEditComponent implements OnInit {
     // data via its unique key
     this.route.data.subscribe(data => {
       // register our subscription "listener", which expects a product
-      this.onProductRetrieved(data['product']);
+      this.onProductRetrieved(<IProduct>data['product']);
     });
   }
 
