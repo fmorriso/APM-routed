@@ -14,7 +14,7 @@ import {ProductService}         from './product.service';
 })
 export class ProductEditComponent implements OnInit {
 
-  pageTitle: string = 'Product Edit';
+  pageTitle = 'Product Edit';
   errorMessage: string;
   product: IProduct;
   private dataIsValid: { [key: string]: boolean } = {};

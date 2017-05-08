@@ -9,7 +9,7 @@ import {IProduct}          from './product';
 })
 export class ProductDetailComponent implements OnInit {
 
-  pageTitle: string = 'Product Detail';
+  pageTitle = 'Product Detail';
   product: IProduct;
   errorMessage: string;
 

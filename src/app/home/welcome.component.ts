@@ -5,7 +5,7 @@ import {Component, OnInit, VERSION} from '@angular/core';
   styleUrls: ['./welcome.component.css']
 })
 export class WelcomeComponent implements OnInit {
-  public pageTitle: string = 'Welcome';
+  public pageTitle = 'Welcome';
   angularVersion: string;
 
   ngOnInit() {

@@ -11,7 +11,7 @@ import {IUser}             from './user/user';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  pageTitle: string = 'Acme Product Management';
+  pageTitle = 'Acme Product Management';
 
   userName: string;//
   currentUser: IUser;
