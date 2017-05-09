@@ -65,7 +65,7 @@ export class ProductEditComponent implements OnInit {
 
     this.validate();
 
-    // if checking a specifc tab
+    // if checking a specific tab
     if (tabKey) {
       return this.dataIsValid[tabKey];
     }
