@@ -5,6 +5,10 @@
 
     <div class="panel-body" *ngIf="product">
         <div class="wizard">
+          <!--
+          The router links below are define as relative links, which in code would look like:
+          this.router.navigate(['info'], {relativeTo: this.route });
+          -->
             <a [routerLink]="['info']">
                 Basic Information
             </a>
