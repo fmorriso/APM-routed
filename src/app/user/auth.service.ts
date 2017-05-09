@@ -6,7 +6,7 @@ import { current}         from 'codelyzer/util/syntaxKind';
 
 @Injectable()
 export class AuthService {
-    currentUser: IUser;
+    currentUser: (IUser | null);
 
     constructor(private messageService: MessageService) { }
 
@@ -40,13 +40,13 @@ export class AuthService {
     }
 
     logout(): void {
-        this.messageService.addMessage(`user ${this.currentUser.userName} has logged out`);
+        this.messageService.addMessage(`user ${this.currentUser!.userName} has logged out`);
         this.currentUser = null;
     }
 
     getCurrentUserName() : string {
       if(this.isLoggedIn()) {
-        return this.currentUser.userName;
+        return this.currentUser!.userName;
       }
       return '';
     }

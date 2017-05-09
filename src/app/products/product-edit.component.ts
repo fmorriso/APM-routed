@@ -17,6 +17,7 @@ export class ProductEditComponent implements OnInit {
   pageTitle = 'Product Edit';
   errorMessage: string;
   product: IProduct;
+  // an array of key/valid validations
   private dataIsValid: { [key: string]: boolean } = {};
 
   constructor(private productService: ProductService,
@@ -59,16 +60,24 @@ export class ProductEditComponent implements OnInit {
     }
   }
 
-  isValid(path?: string): boolean {
+  // validate the specified tab via the key passed in
+  isValid(tabKey?: string): boolean {
+
     this.validate();
-    if (path) {
-      return this.dataIsValid[path];
+
+    // if checking a specifc tab
+    if (tabKey) {
+      return this.dataIsValid[tabKey];
     }
+
+    // Checking all tabs, so
+    // the final validation result is a logical AND of each data validation key/value pair
     return (this.dataIsValid &&
-    Object.keys(this.dataIsValid).every(d => this.dataIsValid[d] === true));
+        Object.keys(this.dataIsValid).every(key => this.dataIsValid[key] === true));
   }
 
   saveProduct(): void {
+    // pass a null tabKey to force validation of the entire product, not just the data on one tab
     if (this.isValid(null)) {
       this.productService.saveProduct(this.product)
         .subscribe(
@@ -89,6 +98,11 @@ export class ProductEditComponent implements OnInit {
     this.router.navigate(['/products']);
   }
 
+  // validate the product, using the product instance, not the form elements.
+  // In this situation, we have two "keys", one for the product "info" which handles
+  // validation of the portion of the current product shown in product-edit-info.component.html
+  // and a second key of "tags" that handles validation of the portion of the product shown
+  // on product-edit-tags.component.html
   validate(): void {
     // Clear the validation object
     this.dataIsValid = {};
