@@ -27,6 +27,10 @@ I regularly use npm-check-updates in the form of `ncu -a` to keep package.json u
 * npm 4.6.1
 * webpack 2.5.1
 
+## Tips on using Bootstrap with Angular-CLI
+ 
+ [Use Bootstrap with Angular-CLI](https://github.com/angular/angular-cli/wiki/stories-include-bootstrap)
+
 ## zone.js cautionary tale
 As of April 24, 2017, zone.js 0.8.8 and Angular 4.x __do not play nice togeher__, so you need to upgrade zone.js to 0.8.9 as shown below:
 ```
