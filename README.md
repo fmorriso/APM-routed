@@ -1,6 +1,6 @@
 # APM-Routed
 
-Deborah Kurata's Angular Routing APM-Final example used in her Pluralsight course converted to use Angular-CLI 1.0.2 and Angular 4.1.1.
+Deborah Kurata's Angular Routing APM-Final example used in her Pluralsight course converted to use Angular-CLI 1.0.3 and Angular 4.1.2.
 
 I thought I knew a lot about Angular-CLI already, but learned quite a lot more by taking John Papa's Angular-CLI course on Pluralsight.
 
@@ -60,7 +60,7 @@ In fact, I routinely replace the default Angular-CLI generated `scripts` in pack
     "start-prod": "ng serve --open --verbose --vendor-chunk --extract-css --prod",
 ```
 
-## Example of using Angular-CLI
+## Example of using Angular-CLI in APM
 
 In module 6 of her Pluralsight course, Deborah patiently (one of the reasons I love her courses) explains how to create the _ProductResolver_ service.
 The Angular-CLI way to scaffold tha service is shown below in multiple steps.  

@@ -13,6 +13,8 @@ import { ProductResolver }          from './product-resolver.service';
 
 import { SharedModule }             from '../shared/shared.module';
 
+
+
 // NOTE: the resolve: pre-fetches the data (a product in this example) before the screen displays
 @NgModule({
   imports: [
@@ -53,6 +55,7 @@ import { SharedModule }             from '../shared/shared.module';
     ProductEditInfoComponent,
     ProductEditTagsComponent,
     ProductFilterPipe
+
   ],
   providers: [
     ProductService,
