@@ -2,6 +2,9 @@ import { NgModule }              from '@angular/core';
 import { BrowserModule }         from '@angular/platform-browser';
 import { HttpModule }            from '@angular/http';
 
+// 3rd-party imports
+import {NgbModule}               from '@ng-bootstrap/ng-bootstrap'
+
 // Imports for loading & configuring the in-memory web api
 import { InMemoryWebApiModule }  from 'angular-in-memory-web-api';
 import { ProductData }           from './products/product-data';
@@ -27,6 +30,7 @@ is AppRoutingModule.
     BrowserModule,
     HttpModule,
     InMemoryWebApiModule.forRoot(ProductData, { delay: 1000 }),
+    NgbModule.forRoot(),
     SharedModule,
     ProductModule,
     UserModule,
