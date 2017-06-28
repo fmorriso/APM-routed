@@ -1,6 +1,10 @@
+//import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule }              from '@angular/core';
-import { BrowserModule }         from '@angular/platform-browser';
+import { CommonModule}           from '@angular/common';
+//import { BrowserModule }         from '@angular/platform-browser';
+
 import { HttpModule }            from '@angular/http';
+//import { style, animate, transition, trigger} from '@angular/animations';
 
 // 3rd-party imports
 import {NgbModule}               from '@ng-bootstrap/ng-bootstrap'
@@ -19,6 +23,7 @@ import { ProductModule }         from './products/product.module';
 import { UserModule }            from './user/user.module';
 import { MessageModule }         from './messages/message.module';
 import { SharedModule }          from './shared/shared.module';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 /* Warning:
 When .forRoot() is in an external app-routing.module,
@@ -27,7 +32,7 @@ is AppRoutingModule.
 */
 @NgModule({
   imports: [
-    BrowserModule,
+    BrowserAnimationsModule,
     HttpModule,
     InMemoryWebApiModule.forRoot(ProductData, { delay: 1000 }),
     NgbModule.forRoot(),
