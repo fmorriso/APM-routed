@@ -133,8 +133,10 @@ John showed me things that saved me a lot of pain, especially `--dryRun`, which 
 
 
 ## Changes
+<ol>
+<li>
 
-### preserveQueryParams deprecated in favor of queryParamsHandling
+**preserveQueryParams deprecated in favor of queryParamsHandling**
 
 In Angular 2.x, HTML anchor tags that need to specify that query parameters should be preserved used this syntax: 
 
@@ -146,10 +148,12 @@ That syntax has been deprecated in Angular 4.x.  It has been replaced by:
  
  __Please note how the replacement does not use []__
 
-## Testing for numeric product id
+</li>
+<li>
+
+**Testing for numeric product id**
 
 Here's how I check the incoming id in the Route Resolver resolve method:
-
 
  ```
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<IProduct> {
@@ -161,7 +165,41 @@ Here's how I check the incoming id in the Route Resolver resolve method:
       return Observable.of(null);
     }
 ```
+</li>
+<li>
 
+**Displaying Messages in sidebar**
+
+I modified Deborah's original code as follows:
+<ul>
+<li>
+
+Removed the inline CSS from `message.component.ts`.
+Each message is displayed in its own Bootstrap `class="row"`.
+</li>
+
+<li>
+
+Modified `message.component.ts` to provide a TypeScript property *getter* for accessing the messages.
+</li>
+
+<li>
+
+Modified the `message.component.html` to get the messages from its own component rather than getting the directly from the message service.
+I prefer to have the HTML be blissfully unaware of the services layer and talk __only__ to its own component.
+</li>
+<li>
+
+Modified the `message.component.html` to use an `<ng-template>` with the newer `[ngForOf]` syntax to loop through the messages.
+That template uses the previously discussed *getter* to access the messages.
+I also replaced the `*ngIf` in a `<div>` with another `<ng-template>`.
+Replacing the *pseudo-DIV's* that were merely *vessels* for `*ngFor` and `*ngIf` with `<ng-template>'s` helps make the *loop* and the *if* stand out better among all the other *genuine* `<div>` elements.
+</li>
+
+</ul>
+
+</li>
+</ol>
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
