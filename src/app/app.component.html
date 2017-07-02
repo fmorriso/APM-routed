@@ -22,10 +22,10 @@
                 </li>
 
                 <li  *ngIf="!isDisplayed()">
-                    <a  class="navbar-link"(click)="displayMessages()">Show Messages</a>
+                    <a [href]="" class="navbar-link"(click)="displayMessages()">Show Messages</a>
                 </li>
                 <li  *ngIf="isDisplayed()">
-                    <a class="navbar-link hover" (click)="hideMessages()">Hide Messages</a>
+                    <a [href]="" class="navbar-link" (click)="hideMessages()">Hide Messages</a>
                 </li>
                 <li *ngIf="!isLoggedIn()">
                     <a [routerLink]="['/login']">Log In</a>

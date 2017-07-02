@@ -7,8 +7,12 @@
         </a>
   </span>
 </div>
-<div *ngFor="let message of getMessages(); let i=index">
-    <div *ngIf="i<10" class="message-row">
-        {{ message }}
+
+<ng-template ngFor let-message [ngForOf]="getMessages()" let-i="index">
+    <div *ngIf="i<10">
+        <div class="row">
+            <div class="col-md-1">{{ i }}</div>
+            <div class="col-md-11">{{ message }}</div>
+        </div>
     </div>
-</div>
+</ng-template>

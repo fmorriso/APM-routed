@@ -5,9 +5,7 @@ import { MessageService } from '../messages/message.service';
 
 @Component({
     templateUrl: './message.component.html',
-    styles: [
-        '.message-row { margin-bottom: 10px }'
-    ]
+	styleUrls: ['./message.component.css']
 })
 export class MessageComponent {
 
@@ -20,5 +18,7 @@ export class MessageComponent {
 
     close(): void {
         // Close the popup.
+        this.router.navigate([{ outlets: { popup: null } }]);
+        this.messageService.isDisplayed = false;
     }
 }
