@@ -185,7 +185,7 @@ Modified `message.component.ts` to provide a TypeScript property *getter* for ac
 
 <li>
 
-Modified the `message.component.html` to get the messages from its own component rather than getting the directly from the message service.
+Modified the `message.component.html` to get the messages from its own component rather than getting them directly from the message service.
 I prefer to have the HTML be blissfully unaware of the services layer and talk __only__ to its own component.
 </li>
 <li>
@@ -193,7 +193,7 @@ I prefer to have the HTML be blissfully unaware of the services layer and talk _
 Modified the `message.component.html` to use an `<ng-template>` with the newer `[ngForOf]` syntax to loop through the messages.
 That template uses the previously discussed *getter* to access the messages.
 I also replaced the `*ngIf` in a `<div>` with another `<ng-template>`.
-Replacing the *pseudo-DIV's* that were merely *vessels* for `*ngFor` and `*ngIf` with `<ng-template>'s` helps make the *loop* and the *if* stand out better among all the other *genuine* `<div>` elements.
+Replacing those two what I will refer to as *pseudo-DIV's* that were merely *vessels* for `*ngFor` and `*ngIf` with `<ng-template>'s` helps make the *loop* and the *if* stand out better among all the other *genuine* `<div>` elements.
 </li>
 
 </ul>
