@@ -13,7 +13,7 @@ const AppRoutes = [
 
 @NgModule({
   imports:[
-    RouterModule.forRoot(AppRoutes)
+    RouterModule.forRoot(AppRoutes, {enableTracing: false})
   ],
   exports: [ RouterModule ]
 })
