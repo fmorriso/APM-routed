@@ -90,6 +90,7 @@
 
 .navbar-default .navbar-link:hover {
   color: #ffffe0;
+  cursor: pointer;
 }
 
 @media (max-width: 767px) {
