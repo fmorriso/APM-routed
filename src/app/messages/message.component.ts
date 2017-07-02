@@ -14,7 +14,7 @@ export class MessageComponent {
 	}
 
 	get messages(): string[] {
-		return this.messageService.getMessages();
+		return this.messageService.messages;
 	}
 
 	close(): void {

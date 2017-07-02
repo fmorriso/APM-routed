@@ -2,8 +2,9 @@ import {Injectable} from '@angular/core';
 
 @Injectable()
 export class MessageService {
+
 	private _messages: string[] = [];
-    isDisplayed = false;
+    private _isDisplayed = false;
 
 	addMessage(message: string): void {
 		//console.log('addMessage - message=' + message);
@@ -11,11 +12,16 @@ export class MessageService {
 		this._messages.unshift(message + ' at ' + currentDate.toLocaleString());
 	}
 
-	getMessages(): string[] {
+	get isDisplayed(): boolean {
+		return this._isDisplayed;
+	}
+
+	set isDisplayed(val: boolean){
+		this._isDisplayed = val;
+	}
+
+	get messages(): string[] {
 		return this._messages;
 	}
 
-	public messages(): string[] {
-		return this._messages;
-	}
 }
