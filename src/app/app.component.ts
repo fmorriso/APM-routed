@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Event, NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router} from '@angular/router';
 
-
 import {AuthService} from './user/auth.service';
+import { MessageService } from './messages/message.service';
 import {IUser} from './user/user';
 
 @Component({
@@ -18,7 +18,8 @@ export class AppComponent implements OnInit {
 	currentUser: IUser;
 
 	constructor(private authService: AuthService,
-	            private router: Router) {
+	            private router: Router,
+	            private messageService: MessageService) {
 		router.events
 			.subscribe((routerEvent: Event) => {
 				this.checkRouterEvent(routerEvent)
@@ -27,6 +28,26 @@ export class AppComponent implements OnInit {
 
 	ngOnInit() {
 
+	}
+
+	logOut(): void {
+		this.authService.logout();
+		this.router.navigateByUrl('/welcome');
+	}
+
+	isDisplayed(): boolean {
+		return this.messageService.isDisplayed;
+	}
+
+	isLoggedIn(): boolean {
+		return this.authService.isLoggedIn();
+	}
+
+	getCurrentUserName(): string {
+		if (this.isLoggedIn()) {
+			return this.authService.getCurrentUserName();
+		}
+		return '';
 	}
 
 	private checkRouterEvent(routerEvent: Event): void {
@@ -41,21 +62,13 @@ export class AppComponent implements OnInit {
 		}
 	}
 
-	logOut(): void {
-		this.authService.logout();
-		this.router.navigateByUrl('/welcome');
-	}
+    displayMessages(): void {
+        this.router.navigate([{ outlets: { popup: ['messages'] } }]);
+        this.messageService.isDisplayed = true;
+    }
 
-	isLoggedIn(): boolean {
-		return this.authService.isLoggedIn();
-	}
-
-	getCurrentUserName(): string {
-		if (this.isLoggedIn()) {
-			return this.authService.getCurrentUserName();
-		}
-		return '';
-	}
-
-
+    hideMessages(): void {
+        this.router.navigate([{ outlets: { popup: null } }]);
+        this.messageService.isDisplayed = false;
+    }
 }
