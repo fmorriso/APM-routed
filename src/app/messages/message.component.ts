@@ -14,7 +14,7 @@ export class MessageComponent  implements OnInit {
 	}
 
 	ngOnInit() {
-		this.messageService.isDisplayed = false;
+		// do NOT initialize messageService.isDisplayed - seems to mess up the *ngIf in the HTML
 	}
 
 	get messages(): string[] {
@@ -23,7 +23,8 @@ export class MessageComponent  implements OnInit {
 
 	close(): void {
 		// Close the popup.
+		Promise.resolve(null).then(() => this.messageService.isDisplayed = false);
 		this.router.navigate([{outlets: {popup: null}}]);
-		this.messageService.isDisplayed = false;
+
 	}
 }
