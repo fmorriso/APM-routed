@@ -27,7 +27,7 @@
                 </li>
 
                 <li [ngSwitch]="isLoggedIn()">
-                    <a *ngSwitchCase="true" (click)="logOut()">Log Out</a>
+                    <a *ngSwitchCase="true" class="navbar-link" (click)="logOut()">Log Out</a>
                     <a *ngSwitchDefault [routerLink]="['/login']">Log In</a>
                 </li>
 

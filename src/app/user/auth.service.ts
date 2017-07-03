@@ -7,6 +7,7 @@ import { current}         from 'codelyzer/util/syntaxKind';
 @Injectable()
 export class AuthService {
     currentUser: (IUser | null);
+    redirectUrl: string;
 
     constructor(private messageService: MessageService) { }
 
