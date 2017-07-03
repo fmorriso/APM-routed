@@ -224,24 +224,6 @@ That template uses the previously discussed *getter* to access the messages.
 I also replaced the `*ngIf` in a `<div>` with another `<ng-template>`.
 Replacing those two what I will refer to as *pseudo-DIV's* that were merely *vessels* for `*ngFor` and `*ngIf` with `<ng-template>'s` helps make the *loop* and the *if* stand out better among all the other *genuine* `<div>` elements.
 </li>
-<li>
-
-Modified `app.component.html` to use an `ngSwitch` statement instead of two separate `ngIf` statements when
-determining which navigation to display for Hide/Show messages as well as Log In vs. Log out.
-This allows the expressions that control the "truthyness" to be used only once:
-```html
-<li [ngSwitch]="isDisplayed()">
-    <a *ngSwitchCase="true" class="navbar-link" (click)="hideMessages()">Hide Messages</a>
-    <a *ngSwitchDefault class="navbar-link" (click)="displayMessages()">Show Messages</a>
-</li>
-
-<li [ngSwitch]="isLoggedIn()">
-    <a *ngSwitchCase="true" (click)="logOut()">Log Out</a>
-    <a *ngSwitchDefault [routerLink]="['/login']">Log In</a>
-</li>
-```
-</li>
-
 
 </ul>
 
