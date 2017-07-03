@@ -21,18 +21,16 @@
                     <a>Welcome {{ getCurrentUserName() }}</a>
                 </li>
 
-                <li  *ngIf="!isDisplayed()">
-                    <a class="navbar-link" (click)="displayMessages()">Show Messages</a>
+                <li [ngSwitch]="isDisplayed()">
+                    <a *ngSwitchCase="true" class="navbar-link" (click)="hideMessages()">Hide Messages</a>
+                    <a *ngSwitchDefault class="navbar-link" (click)="displayMessages()">Show Messages</a>
                 </li>
-                <li  *ngIf="isDisplayed()">
-                    <a  class="navbar-link" (click)="hideMessages()">Hide Messages</a>
+
+                <li [ngSwitch]="isLoggedIn()">
+                    <a *ngSwitchCase="true" (click)="logOut()">Log Out</a>
+                    <a *ngSwitchDefault [routerLink]="['/login']">Log In</a>
                 </li>
-                <li *ngIf="!isLoggedIn()">
-                    <a [routerLink]="['/login']">Log In</a>
-                </li>
-                <li *ngIf="isLoggedIn()">
-                    <a (click)="logOut()">Log Out</a>
-                </li>
+
             </ul>
 
         </div>
