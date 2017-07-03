@@ -2,10 +2,10 @@ import { Injectable }     from '@angular/core';
 
 import { IUser }          from './user';
 import { MessageService } from '../messages/message.service';
-import { current}         from 'codelyzer/util/syntaxKind';
 
 @Injectable()
 export class AuthService {
+
     currentUser: (IUser | null);
     redirectUrl: string;
 
