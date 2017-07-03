@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit } from '@angular/core';
 import {Event, NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router} from '@angular/router';
 
 import {AuthService} from './user/auth.service';
@@ -20,6 +20,7 @@ export class AppComponent implements OnInit {
 	constructor(private authService: AuthService,
 	            private router: Router,
 	            private messageService: MessageService) {
+
 		router.events
 			.subscribe((routerEvent: Event) => {
 				this.checkRouterEvent(routerEvent)
@@ -44,7 +45,7 @@ export class AppComponent implements OnInit {
 	}
 
 	getCurrentUserName(): string {
-		if (this.isLoggedIn()) {
+		if (this.isLoggedIn) {
 			return this.authService.getCurrentUserName();
 		}
 		return '';
@@ -63,14 +64,21 @@ export class AppComponent implements OnInit {
 	}
 
     displayMessages(): void {
-	    console.log(typeof event);
-        this.router.navigate([{ outlets: { popup: ['messages'] } }]);
-        this.messageService.isDisplayed = true;
+	    //this.updateDisplayStatus(true);
+		this.router.navigate([{ outlets: { popup: ['messages'] } }]);
+	    this.updateDisplayStatus(true);
+        //this.messageService.isDisplayed = true;
+	    //Promise.resolve(null).then(() => this.messageService.isDisplayed = true);
     }
 
     hideMessages(): void {
-	    console.log(typeof event);
+	    //this.updateDisplayStatus(false);
         this.router.navigate([{ outlets: { popup: null } }]);
         this.messageService.isDisplayed = false;
+	    //Promise.resolve(null).then(() => this.messageService.isDisplayed = false);
+    }
+
+    private updateDisplayStatus(status: boolean): void {
+	    Promise.resolve(null).then(() => this.messageService.isDisplayed = status);
     }
 }

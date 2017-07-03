@@ -1,23 +1,19 @@
-import {Injectable} from '@angular/core';
+import {Injectable, OnInit} from '@angular/core';
 
 @Injectable()
-export class MessageService {
+export class MessageService implements OnInit {
+
+	ngOnInit(): void {
+		//this.isDisplayed = false;
+	}
 
 	private _messages: string[] = [];
-    private _isDisplayed = false;
+    isDisplayed = false;
 
 	addMessage(message: string): void {
 		//console.log('addMessage - message=' + message);
 		const currentDate = new Date();
 		this._messages.unshift(message + ' at ' + currentDate.toLocaleString());
-	}
-
-	get isDisplayed(): boolean {
-		return this._isDisplayed;
-	}
-
-	set isDisplayed(val: boolean){
-		this._isDisplayed = val;
 	}
 
 	get messages(): string[] {

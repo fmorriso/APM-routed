@@ -174,6 +174,35 @@ I modified Deborah's original code as follows:
 <ul>
 <li>
 
+To avoid `ExpresssionChangedAFterItHasBeenCheckedError` being displayed in the browser console,
+I adapted what I learned from an [article](https://medium.com/@maximus.koretskyi/everything-you-need-to-know-about-the-expressionchangedafterithasbeencheckederror-error-e3fd9ce7dbb4)
+by changing direct calls to `messageService.isDisplayed` with the use of a Promise:
+```
+private updateDisplayStatus(status: boolean): void {
+    Promise.resolve(null).then(() => this.messageService.isDisplayed = status);
+}
+``` 
+which in turn caused me to replace calls such as this one:
+```typescript
+this.messageService.isDisplayed = true;
+```
+with this one:
+```typescript
+this.updateDisplayStatus(true);
+```
+
+It seems that HTML markup like the following does not like all the dynamic changes to `isDisplayed`
+```html
+<li  *ngIf="!isDisplayed()">
+    <a [href]="" class="navbar-link" (click)="displayMessages()">Show Messages</a>
+</li>
+<li  *ngIf="isDisplayed()">
+    <a [href]="" class="navbar-link" (click)="hideMessages()">Hide Messages</a>
+</li>
+```
+</li>
+<li>
+
 Removed the inline CSS from `message.component.ts`.
 Each message is displayed in its own Bootstrap `class="row"`.
 </li>

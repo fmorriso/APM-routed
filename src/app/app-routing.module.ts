@@ -5,15 +5,17 @@ import { RouterModule }          from '@angular/router';
 import { WelcomeComponent }      from './home/welcome.component';
 import { PageNotFoundComponent } from './page-not-found.component';
 
-const AppRoutes = [
+const appRoutes = [
   { path: 'welcome', component: WelcomeComponent },
   { path: '', redirectTo: 'welcome', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 ];
 
+const rootConfig = {enableTracing: false};
+
 @NgModule({
   imports:[
-    RouterModule.forRoot(AppRoutes, {enableTracing: false})
+    RouterModule.forRoot(appRoutes, rootConfig)
   ],
   exports: [ RouterModule ]
 })
