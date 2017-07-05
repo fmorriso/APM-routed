@@ -10,7 +10,7 @@ import {ProductService} from './product.service';
 
 @Component({
 	templateUrl: './product-edit.component.html',
-	styleUrls: ['./product-edit.component.css']
+	styleUrls: ['./product-edit.component.scss']
 })
 export class ProductEditComponent implements OnInit {
 

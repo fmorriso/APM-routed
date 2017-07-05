@@ -43,6 +43,7 @@ export class AuthService {
     logout(): void {
         this.messageService.addMessage(`user ${this.currentUser!.userName} has logged out`);
         this.currentUser = null;
+	    //Promise.resolve(null).then(() => this.cd.detectChanges());
     }
 
     getCurrentUserName() : string {

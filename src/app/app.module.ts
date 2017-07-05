@@ -14,15 +14,20 @@ import {AppComponent} from './app.component';
 import {WelcomeComponent} from './home/welcome.component';
 import {PageNotFoundComponent} from './page-not-found.component';
 /* Feature Modules */
-import {ProductModule} from './products/product.module';
+//NOT WANTED when lazy loading: import {ProductModule} from './products/product.module';
+
 import {UserModule} from './user/user.module';
 import {MessageModule} from './messages/message.module';
 import {SharedModule} from './shared/shared.module';
 
-/* Warning:
+/*
+Warning:
 When .forRoot() is in an external app-routing.module,
 you must specify that module last, which in this case,
 is AppRoutingModule.
+
+Lazy Loading Node:
+In order to lazy load the ProductModule, it must NOT be mentioned in the imports section below.
 */
 @NgModule({
 	imports: [
@@ -31,7 +36,7 @@ is AppRoutingModule.
 		InMemoryWebApiModule.forRoot(ProductData, {delay: 1500}),
 		NgbModule.forRoot(),
 		SharedModule,
-		ProductModule,
+		//ProductModule,
 		UserModule,
 		MessageModule,
 		AppRoutingModule

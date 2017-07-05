@@ -1,4 +1,4 @@
-import {Component, OnInit } from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {Event, NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router} from '@angular/router';
 
 import {AuthService} from './user/auth.service';
@@ -8,7 +8,7 @@ import {IUser} from './user/user';
 @Component({
 	selector: 'app-root',
 	templateUrl: './app.component.html',
-	styleUrls: ['./app.component.css']
+	styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
 	pageTitle = 'Acme Product Management';
@@ -19,7 +19,8 @@ export class AppComponent implements OnInit {
 
 	constructor(private authService: AuthService,
 	            private router: Router,
-	            private messageService: MessageService) {
+	            public messageService: MessageService,
+	            private cd: ChangeDetectorRef) {
 
 		router.events
 			.subscribe((routerEvent: Event) => {
@@ -28,11 +29,13 @@ export class AppComponent implements OnInit {
 	}
 
 	ngOnInit() {
-
+		console.log('AppComponent - ngOnInit');
 	}
 
 	logOut(): void {
+		console.log(`app.component - logOut() - messageService.isDisplayed=${this.messageService.isDisplayed}`);
 		this.authService.logout();
+		//Promise.resolve(null).then(() => this.messageService.isDisplayed = false);
 		this.router.navigateByUrl('/welcome');
 	}
 
@@ -41,6 +44,7 @@ export class AppComponent implements OnInit {
 	}
 
 	isLoggedIn(): boolean {
+		console.log(`app.component - isLoggedIn() - messageService.isDisplayed=${this.messageService.isDisplayed}`);
 		return this.authService.isLoggedIn();
 	}
 
@@ -61,24 +65,30 @@ export class AppComponent implements OnInit {
 			routerEvent instanceof NavigationError) {
 			this.loading = false;
 		}
+
+		this.cd.detectChanges();
 	}
 
     displayMessages(): void {
 	    //this.updateDisplayStatus(true);
-		this.router.navigate([{ outlets: { popup: ['messages'] } }]);
 	    this.updateDisplayStatus(true);
-        //this.messageService.isDisplayed = true;
-	    //Promise.resolve(null).then(() => this.messageService.isDisplayed = true);
+	    this.router.navigate([{ outlets: { popup: ['messages'] } }]);
     }
 
     hideMessages(): void {
 	    //this.updateDisplayStatus(false);
-        this.router.navigate([{ outlets: { popup: null } }]);
-        this.messageService.isDisplayed = false;
+	    this.updateDisplayStatus(false);
+	    this.router.navigate([{ outlets: { popup: null } }]);
+        //this.messageService.isDisplayed = false;
 	    //Promise.resolve(null).then(() => this.messageService.isDisplayed = false);
+
     }
 
     private updateDisplayStatus(status: boolean): void {
-	    Promise.resolve(null).then(() => this.messageService.isDisplayed = status);
+	    console.log(`app.component - updateDisplayStatus() - Before - messageService.isDisplayed=${this.messageService.isDisplayed}, changing to ${status}`);
+	    this.messageService.isDisplayed = status
+	    //Promise.resolve(null).then(() => this.messageService.isDisplayed = status);
+	    //Promise.resolve(null).then(() => console.log(`app.component - updateDisplayStatus() - After - messageService.isDisplayed=${this.messageService.isDisplayed}`));
+	    //Promise.resolve(null).then(() => this.cd.detectChanges());
     }
 }

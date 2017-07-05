@@ -6,7 +6,7 @@ import {IProduct}                     from './product';
 
 @Component({
   templateUrl: './product-edit-info.component.html',
-  styleUrls:  ['./product-edit-info.component.css']
+  styleUrls:  ['./product-edit-info.component.scss']
 })
 export class ProductEditInfoComponent implements OnInit {
   @ViewChild(NgForm) productForm: NgForm;

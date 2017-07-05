@@ -21,9 +21,9 @@
                     <a>Welcome {{ getCurrentUserName() }}</a>
                 </li>
 
-                <li [ngSwitch]="isDisplayed()">
+                <li [ngSwitch]="messageService.isDisplayed">
                     <a *ngSwitchCase="true" class="navbar-link" (click)="hideMessages()">Hide Messages</a>
-                    <a *ngSwitchDefault class="navbar-link" (click)="displayMessages()">Show Messages</a>
+                    <a *ngSwitchDefault     class="navbar-link" (click)="displayMessages()">Show Messages</a>
                 </li>
 
                 <li [ngSwitch]="isLoggedIn()">
@@ -36,7 +36,7 @@
         </div>
     </nav>
     <div class="row">
-        <div class="pull-right col-md-2">isDisplayed = {{isDisplayed()}}</div>
+        <div class="pull-right col-md-2">isDisplayed = {{messageService.isDisplayed}}</div>
     </div>
     <div class="container">
         <div class="row">
