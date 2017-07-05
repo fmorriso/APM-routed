@@ -174,7 +174,7 @@ I modified Deborah's original code as follows:
 <ul>
 <li>
 
-To avoid `ExpresssionChangedAFterItHasBeenCheckedError` being displayed in the browser console,
+To avoid `ExpressionChangedAfterItHasBeenCheckedError` being displayed in the browser console,
 I adapted what I learned from an [article](https://medium.com/@maximus.koretskyi/everything-you-need-to-know-about-the-expressionchangedafterithasbeencheckederror-error-e3fd9ce7dbb4)
 by changing direct calls to `messageService.isDisplayed` with the use of a Promise:
 ```
