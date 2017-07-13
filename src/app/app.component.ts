@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import {Event, NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router} from '@angular/router';
 
 import {AuthService} from './user/auth.service';
@@ -17,10 +17,9 @@ export class AppComponent implements OnInit {
 	userName: string;//
 	currentUser: IUser;
 
-	constructor(private authService: AuthService,
+	constructor(public authService: AuthService,
 	            private router: Router,
-	            public messageService: MessageService,
-	            private cd: ChangeDetectorRef) {
+	            public messageService: MessageService ) {
 
 		router.events
 			.subscribe((routerEvent: Event) => {
@@ -48,6 +47,13 @@ export class AppComponent implements OnInit {
 		return this.authService.isLoggedIn();
 	}
 
+	get currentUserName(): string {
+		if (this.isLoggedIn) {
+			return this.authService.getCurrentUserName();
+		}
+		return '';
+	}
+
 	getCurrentUserName(): string {
 		if (this.isLoggedIn) {
 			return this.authService.getCurrentUserName();
@@ -65,8 +71,6 @@ export class AppComponent implements OnInit {
 			routerEvent instanceof NavigationError) {
 			this.loading = false;
 		}
-
-		this.cd.detectChanges();
 	}
 
     displayMessages(): void {
