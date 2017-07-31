@@ -9,32 +9,37 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/of';
 
 import {IProduct} from './product';
+import {HttpClient} from "@angular/common/http";
 
 @Injectable()
 export class ProductService {
+
+	private compName: string = 'ProductService';
 	private baseUrl = 'api/products';
 
 	constructor(private http: Http) {
+		console.log(`${this.compName} - constructor`);
 	}
 
 	getProducts(): Observable<IProduct[]> {
+		console.log(`${this.compName} - getProducts`);
 		return this.http.get(this.baseUrl)
 			.map(this.extractData)
-			//.do(data => console.log('getProducts: ' + JSON.stringify(data)))
+			.do(data => console.log(`${this.compName} - getProducts: ${JSON.stringify(data)}`))
 			.catch(this.handleError);
 	}
 
 	getProduct(id: number): Observable<IProduct> {
-		//console.log('product.service - getProduct - id === 0:' + (id === 0));
+		console.log(`${this.compName} - getProduct - id === 0: ${(id === 0)}`);
 		if (id === 0) {
 			const product: IProduct = this.initializeProduct();
-			//console.log('product.service - after initializeProduct - product:' + JSON.stringify(product));
+			console.log(`${this.compName} - after initializeProduct - product: ${JSON.stringify(product)}`);
 			return Observable.of(product);
 		}
 		const url = `${this.baseUrl}/${id}`;
 		return this.http.get(url)
 			.map(this.extractData)
-			.do(data => console.log('getProduct: ' + JSON.stringify(data)))
+			.do(data => console.log(`${this.compName} - getProduct: ${JSON.stringify(data)}`))
 			.catch(this.handleError);
 	}
 

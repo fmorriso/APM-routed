@@ -26,14 +26,14 @@ const topLevelRoutes: Routes = [
 	{path: '**', component: PageNotFoundComponent}
 ];
 
-const rootConfig = {
+const routeConfig = {
 	enableTracing: true,
 	preloadingStragegy: SelectiveStrategy
 };
 
 @NgModule({
 	imports: [
-		RouterModule.forRoot(topLevelRoutes, rootConfig)
+		RouterModule.forRoot(topLevelRoutes, routeConfig)
 	],
 	exports: [RouterModule],
 	providers: [SelectiveStrategy]
