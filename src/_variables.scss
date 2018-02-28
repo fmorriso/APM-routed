@@ -1,0 +1,12 @@
+// Make Bootstrap 4 more like Bootstrap 3 in terms of font size
+//  0.75rem => 12px (approx), the old Bootstrap 3.x default base font size
+$font-size-base: 0.75rem !default;
+$font-size-h1: 2rem !default; // 2.5
+$font-size-h2: 1.6rem !default; // 2
+$font-size-h3: 1.4rem !default; // 1.75
+$font-size-h4: 1.2rem !default; // 1.5
+$font-size-h5: 1rem !default; // 1.25
+$font-size-h6: 0.8rem !default; // 1
+
+// Font Awesome
+$fa-font-path : '../node_modules/font-awesome/fonts';
