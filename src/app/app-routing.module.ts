@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import {ExtraOptions, RouterModule, Routes} from '@angular/router';
 
 // our custom feature module preloading service
 import { SelectiveStrategy } from './selective-strategy.service';
@@ -26,9 +26,9 @@ const topLevelRoutes: Routes = [
 	{path: '**', component: PageNotFoundComponent}
 ];
 
-const routeConfig = {
+const routeConfig: ExtraOptions = {
 	enableTracing: true,
-	preloadingStragegy: SelectiveStrategy
+	preloadingStrategy: SelectiveStrategy
 };
 
 @NgModule({

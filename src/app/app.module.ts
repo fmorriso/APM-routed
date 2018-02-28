@@ -2,11 +2,12 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 
-import {HttpModule} from '@angular/http';
+import {HttpClientModule} from '@angular/common/http';
+import { HttpClientInMemoryWebApiModule  } from 'angular-in-memory-web-api';
+
 // 3rd-party imports
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap'
+
 // Imports for loading & configuring the in-memory web api
-import {InMemoryWebApiModule} from 'angular-in-memory-web-api';
 import {ProductData} from './products/product-data';
 
 import {AppRoutingModule} from './app-routing.module';
@@ -33,9 +34,8 @@ In order to lazy load the ProductModule, it must NOT be mentioned in the imports
 @NgModule({
 	imports: [
 		BrowserModule,
-		HttpModule,
-		InMemoryWebApiModule.forRoot(ProductData, {delay: 1500}),
-		NgbModule.forRoot(),
+        HttpClientModule,
+        HttpClientInMemoryWebApiModule.forRoot(ProductData, {delay: 1500}),
 		SharedModule,
 		//ProductModule,
 		UserModule,
