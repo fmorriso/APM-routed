@@ -1,35 +1,32 @@
-﻿<div class="panel panel-primary">
-  <div class="panel-heading">
-    {{pageTitle}}
-  </div>
-  <div class="panel-body">
-    <div class="row">
-      <img src="../../logo.jpg"
-           class="img-responsive center-block logo"
-      />
+﻿﻿<div class="card">
+    <div class="card-header bg-primary text-light h4 card-text">
+        {{pageTitle}}
     </div>
-    <div class="row">
-      <div class="text-center">Developed by:</div>
-    </div>
-    <div class="row">
-      <div class="h4 text-center">Deborah Kurata</div>
-    </div>
-    <div class="row">
-      <div class="text-center">@deborahkurata</div>
-    </div>
-    <div class="row">
-      <div class="col-md-12 text-center">
-        <a href="http://www.bit.ly/DeborahKsBlog" target="_blank">Deborah's Blog</a>
-      </div>
-    </div>
-    <hr/>
+    <div class="card-body">
+        <div class="row">
+            <div class="col">&nbsp;</div>
+            <img src="./assets/images/logo.jpg"
+                 class="col"
+                 style="max-height: 20rem; max-width: 40rem"/>
+            <div class="col">&nbsp;</div>
+        </div>
+        <div class="row text-center">
+            <div class="col">Developed by:</div>
+        </div>
+        <div class="row text-center">
+            <div class="h3 col">Deborah Kurata</div>
+        </div>
 
-    <div class="row">
-      <div class="col-md-12 text-center">
-        Modified to use Angular-CLI by: Fred Morrison
-      </div>
-
+        <div class="row text-center">
+            <div class="col">@deborahkurata</div>
+        </div>
+        <div class="row text-center">
+            <div class="col">
+                <a href="http://www.bit.ly/DeborahKsBlog">www.bit.ly/DeborahKsBlog</a>
+            </div>
+        </div>
     </div>
-
-  </div>
+    <div class="card-footer text-center bg-dark text-light card-text h5">
+        Angular version: {{angularVersion}}
+    </div>
 </div>
