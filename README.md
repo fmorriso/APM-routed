@@ -20,15 +20,12 @@ I regularly use npm-check-updates in the form of `ncu -a` to keep package.json u
 
 ## Tools used
 
-* [Angular-CLI 1.2.0](https://github.com/angular/angular-cli/wiki)
-* [Angular 4.2.5](http://angular.io)
-* [JetBrains WebStorm 2017.2 EAP](https://www.jetbrains.com/webstorm/) - has lots of built-in, out-of-box support for both Angular 4 and Angular-CLI that have to be added on to other IDE's such as Visual Studio Code.  WebStorm has a nice, built-in npm runner window and good GitHub.com source code control interaction.  If WebStorm has any short-comings, it's the lack of --dry-run support when using it's File / New / Angular-CLI capability, but that can be overcome using the built-in Terminal window.
-* [npm-check-updates 2.12.0](https://www.npmjs.com/package/npm-check-updates) - no more manually updating package.json when something changes in one of the dependencies.  Saves a lot of time by just running `ncu -a` followed by `npm install`.
-* [TypeScript 2.4.0](https://www.npmjs.com/package/typescript)
-* npm 5.0.4
-* webpack 3.0.0
-* [ng-bootstrap 1.7.1](https://ng-bootstrap.github.io/)
-* [Bootstrap 3.3.7](http://getbootstrap.com/)
+* [Angular-CLI 1.7.1](https://github.com/angular/angular-cli/wiki)
+* [Angular 5.2.7](http://angular.io)
+* [JetBrains WebStorm 2017.3](https://www.jetbrains.com/webstorm/) - has lots of built-in, out-of-box support for both Angular 4 and Angular-CLI that have to be added on to other IDE's such as Visual Studio Code.  WebStorm has a nice, built-in npm runner window and good GitHub.com source code control interaction.  If WebStorm has any short-comings, it's the lack of --dry-run support when using it's File / New / Angular-CLI capability, but that can be overcome using the built-in Terminal window.
+* [npm-check-updates 2.14.1](https://www.npmjs.com/package/npm-check-updates) - no more manually updating package.json when something changes in one of the dependencies.  Saves a lot of time by just running `ncu -a` followed by `npm install`.
+* [TypeScript 2.6.2](https://www.npmjs.com/package/typescript)
+* [Bootstrap 4.0.0](http://getbootstrap.com/)
 
 ## Tips on using Bootstrap with Angular-CLI
  
@@ -172,6 +169,12 @@ Here's how I check the incoming id in the Route Resolver resolve method:
 
 I modified Deborah's original code as follows:
 <ul>
+<li>
+Converted from Bootstrap 3.x to 4.x.  This required a correpsonding switch of her StarComponent to use Font Awesome class="fa fa-start" values instead of Bootstrap 3.x's classes.
+</li>
+<li>
+Upgraded the ProductService from Http to HttpClient.  This included a corresponding change of how the in-memory database is set up and used.
+</li>
 <li>
 
 To avoid `ExpressionChangedAfterItHasBeenCheckedError` being displayed in the browser console,
