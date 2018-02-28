@@ -23,7 +23,7 @@
 
                 <li [ngSwitch]="isDisplayed()">
                     <a *ngSwitchCase="true" class="navbar-link" (click)="hideMessages()">Hide Messages</a>
-                    <a *ngSwitchDefault     class="navbar-link" (click)="displayMessages()">Show Messages</a>
+                    <a *ngSwitchDefault class="navbar-link" (click)="displayMessages()">Show Messages</a>
                 </li>
 
                 <li [ngSwitch]="isLoggedIn()">
@@ -48,11 +48,12 @@
 
     </div>
     <div class="container">
-        <div class="panel panel-primary">
-            <div class="panel-heading">
+        <div class="row">
+            <div class="col-md-10">
                 <app-footer></app-footer>
             </div>
         </div>
+
     </div>
 </div>
 
