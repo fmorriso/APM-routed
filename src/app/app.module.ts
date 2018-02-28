@@ -19,6 +19,7 @@ import {PageNotFoundComponent} from './page-not-found.component';
 import {UserModule} from './user/user.module';
 import {MessageModule} from './messages/message.module';
 import {SharedModule} from './shared/shared.module';
+import { MenuComponent } from './home/menu.component';
 
 /*
 Warning:
@@ -44,7 +45,8 @@ In order to lazy load the ProductModule, it must NOT be mentioned in the imports
 	declarations: [
 		AppComponent,
 		WelcomeComponent,
-		PageNotFoundComponent
+		PageNotFoundComponent,
+		MenuComponent
 	],
 	bootstrap: [AppComponent]
 })

@@ -6,7 +6,7 @@ import { MessageService } from './messages/message.service';
 import {IUser} from './user/user';
 
 @Component({
-	selector: 'app-root',
+	selector: 'pm-root',
 	templateUrl: './app.component.html',
 	styleUrls: ['./app.component.scss']
 })

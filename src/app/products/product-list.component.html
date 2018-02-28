@@ -55,8 +55,8 @@
                         <td>{{ product.releaseDate }}</td>
                         <td>{{ product.price | currency:"USD":true:"1.2-2" }}</td>
                         <td>
-                            <app-star [rating]="product.starRating">
-                            </app-star>
+                            <pm-star [rating]="product.starRating">
+                            </pm-star>
                        </td>
                        <td>
                             <a class="btn btn-primary"
