@@ -1,8 +1,8 @@
 // This service is used throughout the entire application
 import {Injectable} from '@angular/core';
 import {PreloadingStrategy, Route} from '@angular/router';
-import {Observable} from 'rxjs/Observable';
-import 'rxjs/add/observable/of';
+import {Observable} from 'rxjs';
+
 
 @Injectable()
 export class SelectiveStrategy implements PreloadingStrategy {

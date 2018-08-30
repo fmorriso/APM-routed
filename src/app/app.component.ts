@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef} from '@angular/core';
 import {Event, NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router} from '@angular/router';
 
 import {AuthService} from './user/auth.service';
@@ -11,6 +11,9 @@ import {IUser} from './user/user';
 	styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+
+	@ViewChild('navbarToggler') navbarToggler: ElementRef;
+
 	pageTitle = 'Acme Product Management';
 	loading: boolean = true;
 
@@ -95,4 +98,27 @@ export class AppComponent implements OnInit {
 	    //Promise.resolve(null).then(() => console.log(`app.component - updateDisplayStatus() - After - messageService.isDisplayed=${this.messageService.isDisplayed}`));
 	    //Promise.resolve(null).then(() => this.cd.detectChanges());
     }
+
+	// collapse the "hamburger stack" if it is currently expanded.
+	// Should be called on the click event of each navigation anchor.
+	// Example:
+	/*
+	   <li class="nav-item" routerLinkActive="active">
+          <a (click)="collapseNav()" class="nav-link" [routerLink]="['/home']">Home</a>
+       </li>
+       <li class="nav-item" routerLinkActive="active">
+           <a (click)="collapseNav()" class="nav-link" [routerLink]="['/about']">About</a>
+       </li>
+	*/
+	collapseNav() {
+		if (this.navBarTogglerIsVisible()) {
+			console.log('collapseNav in NavigationComponent clicking navbarToggler')
+			this.navbarToggler.nativeElement.click();
+		}
+	}
+
+	private navBarTogglerIsVisible() {
+		const isVisible: boolean = (this.navbarToggler.nativeElement.offsetParent !== null);
+		return isVisible;
+	}
 }

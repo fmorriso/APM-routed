@@ -1,59 +1,72 @@
 <span class="glyphicon glyphicon-refresh glyphicon-spin spinner" *ngIf="loading"></span>
 <div>
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
+	<nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-primary">
+		<div class="container-fluid">
+			<button #navbarToggler
+					class="navbar-toggler navbar-toggler-right"
+					type="button"
+					data-toggle="collapse"
+					data-target="#navbarCollapse"
+					aria-controls="navbarCollapse"
+					aria-expanded="false"
+					aria-label="Toggle navigation"
+			></button>
+			<span class="navbar-toggler-icon"></span>
+			<a class="navbar-brand" href="#">{{pageTitle}}</a>
 
-            <a class="navbar-brand">{{pageTitle}}</a>
-            <ul class="nav navbar-nav">
-                <li routerLinkActive="active">
-                    <a [routerLink]="['/welcome']">Home</a>
-                </li>
-                <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-                    <a [routerLink]="['/products']">Product List</a>
-                </li>
-                <li routerLinkActive="active">
-                    <a [routerLink]="['/products', 0, 'edit']">Add Product</a>
-                </li>
-            </ul>
+			<div class="collapse navbar-collapse" id="navbarCollapse" >
 
-            <ul class="nav navbar-nav navbar-right">
-                <li *ngIf="isLoggedIn()">
-                    <a>Welcome {{ currentUserName }}</a>
-                </li>
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item" routerLinkActive="active">
+						<a [routerLink]="['/welcome']">Home</a>
+					</li>
+					<li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+						<a [routerLink]="['/products']">Product List</a>
+					</li>
+					<li class="nav-item" routerLinkActive="active">
+						<a [routerLink]="['/products', 0, 'edit']">Add Product</a>
+					</li>
+				</ul>
 
-                <li [ngSwitch]="isDisplayed()">
-                    <a *ngSwitchCase="true" class="navbar-link" (click)="hideMessages()">Hide Messages</a>
-                    <a *ngSwitchDefault class="navbar-link" (click)="displayMessages()">Show Messages</a>
-                </li>
+				<ul class="navbar-nav navbar-right">
+					<li class="nav-item" *ngIf="isLoggedIn()">
+						<a>Welcome {{ currentUserName }}</a>
+					</li>
 
-                <li [ngSwitch]="isLoggedIn()">
-                    <a *ngSwitchCase="true" class="navbar-link" (click)="logOut()">Log Out</a>
-                    <a *ngSwitchDefault [routerLink]="['/login']">Log In</a>
-                </li>
+					<li class="nav-item" [ngSwitch]="isDisplayed()">
+						<a *ngSwitchCase="true" class="navbar-link" (click)="hideMessages()">Hide Messages</a>
+						<a *ngSwitchDefault class="navbar-link" (click)="displayMessages()">Show Messages</a>
+					</li>
 
-            </ul>
+					<li class="nav-item" [ngSwitch]="isLoggedIn()">
+						<a *ngSwitchCase="true" class="navbar-link" (click)="logOut()">Log Out</a>
+						<a *ngSwitchDefault [routerLink]="['/login']">Log In</a>
+					</li>
 
-        </div>
-    </nav>
+				</ul>
+			</div>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-10">
-                <router-outlet></router-outlet>
-            </div>
-            <div class="col-md-2">
-                <router-outlet name="popup"></router-outlet>
-            </div>
-        </div>
+		</div>
+	</nav>
 
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-10">
-                <pm-footer></pm-footer>
-            </div>
-        </div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-10">
+				<router-outlet></router-outlet>
+			</div>
+			<div class="col-md-2">
+				<router-outlet name="popup"></router-outlet>
+			</div>
+		</div>
 
-    </div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-10">
+				<pm-footer></pm-footer>
+			</div>
+		</div>
+
+	</div>
 </div>
 
